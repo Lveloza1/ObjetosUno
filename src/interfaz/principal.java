@@ -11,6 +11,9 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        cmdCalcular.setEnabled(true);
+        cmdMixto.setEnabled(false);
+        cmdLimpiar.setEnabled(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -201,6 +204,9 @@ public class principal extends javax.swing.JFrame {
             } catch (DenominadorCeroException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
+        cmdCalcular.setEnabled(true);
+        cmdMixto.setEnabled(true);
+        cmdLimpiar.setEnabled(true);
         }
 
     }//GEN-LAST:event_cmdCalcularActionPerformed
@@ -217,6 +223,10 @@ public class principal extends javax.swing.JFrame {
         txtDenominadorM.setText("");
         txtNumerador1.requestFocusInWindow();
         cmbOperacion.setSelectedIndex(0);
+        
+        cmdCalcular.setEnabled(true);
+        cmdMixto.setEnabled(false);
+        cmdLimpiar.setEnabled(true);
 
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
