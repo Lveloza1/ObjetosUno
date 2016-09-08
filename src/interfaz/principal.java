@@ -33,6 +33,10 @@ public class principal extends javax.swing.JFrame {
         cmdLimpiar = new javax.swing.JButton();
         cmdMixto = new javax.swing.JButton();
         txtMixto = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtNumeradorM = new javax.swing.JTextField();
+        txtDenominadorM = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,7 +108,7 @@ public class principal extends javax.swing.JFrame {
                 cmdMixtoActionPerformed(evt);
             }
         });
-        jPanel1.add(cmdMixto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 80, 30));
+        jPanel1.add(cmdMixto, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 80, 30));
 
         txtMixto.setEditable(false);
         txtMixto.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +116,18 @@ public class principal extends javax.swing.JFrame {
                 txtMixtoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMixto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 30, 30));
+        jPanel1.add(txtMixto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 30, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 60, 20));
+
+        txtNumeradorM.setEditable(false);
+        jPanel1.add(txtNumeradorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 60, 30));
+
+        txtDenominadorM.setEditable(false);
+        jPanel1.add(txtDenominadorM, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 60, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("=");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,13 +213,39 @@ public class principal extends javax.swing.JFrame {
         txtDenominador2.setText("");
         txtDenominador3.setText("");
         txtMixto.setText("");
+        txtNumeradorM.setText("");
+        txtDenominadorM.setText("");
         txtNumerador1.requestFocusInWindow();
         cmbOperacion.setSelectedIndex(0);
 
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     private void cmdMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMixtoActionPerformed
-        // TODO add your handling code here:
+        int num3, den3, mix, nm, dm;
+        String ent, num, den;
+        num3 = Integer.parseInt(txtNumerador3.getText());
+        den3 = Integer.parseInt(txtDenominador3.getText());
+        if (num3 < den3) {
+            JOptionPane.showMessageDialog(this, "No puede convertirse a mixto. El numerador 3 no debe ser menor al denominador 3", "error", JOptionPane.ERROR_MESSAGE);
+            txtNumerador1.requestFocusInWindow();
+            txtNumerador1.selectAll();
+
+        } else {
+            mix = (num3 / den3);
+            nm = (num3 % den3);
+
+
+            ent = String.valueOf(mix);
+            txtMixto.setText(ent);
+            
+            num = String.valueOf(nm);
+            txtNumeradorM.setText(num);
+            
+            den = String.valueOf(den3);
+            txtDenominadorM.setText(den);
+            
+
+        }
     }//GEN-LAST:event_cmdMixtoActionPerformed
 
     private void txtMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMixtoActionPerformed
@@ -292,16 +333,20 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton cmdLimpiar;
     private javax.swing.JButton cmdMixto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField txtDenominador1;
     private javax.swing.JTextField txtDenominador2;
     private javax.swing.JTextField txtDenominador3;
+    private javax.swing.JTextField txtDenominadorM;
     private javax.swing.JTextField txtMixto;
     private javax.swing.JTextField txtNumerador1;
     private javax.swing.JTextField txtNumerador2;
     private javax.swing.JTextField txtNumerador3;
+    private javax.swing.JTextField txtNumeradorM;
     // End of variables declaration//GEN-END:variables
 }
