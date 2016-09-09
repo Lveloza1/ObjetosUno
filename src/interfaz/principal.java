@@ -204,9 +204,9 @@ public class principal extends javax.swing.JFrame {
             } catch (DenominadorCeroException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        cmdCalcular.setEnabled(true);
-        cmdMixto.setEnabled(true);
-        cmdLimpiar.setEnabled(true);
+            cmdCalcular.setEnabled(true);
+            cmdMixto.setEnabled(true);
+            cmdLimpiar.setEnabled(true);
         }
 
     }//GEN-LAST:event_cmdCalcularActionPerformed
@@ -223,7 +223,7 @@ public class principal extends javax.swing.JFrame {
         txtDenominadorM.setText("");
         txtNumerador1.requestFocusInWindow();
         cmbOperacion.setSelectedIndex(0);
-        
+
         cmdCalcular.setEnabled(true);
         cmdMixto.setEnabled(false);
         cmdLimpiar.setEnabled(true);
@@ -232,29 +232,38 @@ public class principal extends javax.swing.JFrame {
 
     private void cmdMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMixtoActionPerformed
         int num3, den3, mix, nm, dm;
-        String ent, num, den;
-        num3 = Integer.parseInt(txtNumerador3.getText());
-        den3 = Integer.parseInt(txtDenominador3.getText());
-        if (num3 < den3) {
-            JOptionPane.showMessageDialog(this, "No puede convertirse a mixto. El numerador 3 no debe ser menor al denominador 3", "error", JOptionPane.ERROR_MESSAGE);
+        if (txtNumerador3.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe obtenerse un resultado de operación", "error", JOptionPane.ERROR_MESSAGE);
             txtNumerador1.requestFocusInWindow();
             txtNumerador1.selectAll();
-
+        } else if (txtDenominador3.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe tenerse un resultado de operación", "error", JOptionPane.ERROR_MESSAGE);
+            txtNumerador1.requestFocusInWindow();
+            txtNumerador1.selectAll();
         } else {
-            mix = (num3 / den3);
-            nm = (num3 % den3);
+            String ent, num, den;
 
+            num3 = Integer.parseInt(txtNumerador3.getText());
+            den3 = Integer.parseInt(txtDenominador3.getText());
+            if (num3 < den3) {
+                JOptionPane.showMessageDialog(this, "No puede convertirse a mixto. El numerador 3 no debe ser menor al denominador 3", "error", JOptionPane.ERROR_MESSAGE);
+                txtNumerador1.requestFocusInWindow();
+                txtNumerador1.selectAll();
 
-            ent = String.valueOf(mix);
-            txtMixto.setText(ent);
-            
-            num = String.valueOf(nm);
-            txtNumeradorM.setText(num);
-            
-            den = String.valueOf(den3);
-            txtDenominadorM.setText(den);
-            
+            } else {
+                mix = (num3 / den3);
+                nm = (num3 % den3);
 
+                ent = String.valueOf(mix);
+                txtMixto.setText(ent);
+
+                num = String.valueOf(nm);
+                txtNumeradorM.setText(num);
+
+                den = String.valueOf(den3);
+                txtDenominadorM.setText(den);
+
+            }
         }
     }//GEN-LAST:event_cmdMixtoActionPerformed
 
