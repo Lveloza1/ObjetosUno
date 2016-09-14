@@ -76,5 +76,6 @@ public class Fraccionario {
         f = new Fraccionario(num, den);
         return f;
     }
+    
 
 }
